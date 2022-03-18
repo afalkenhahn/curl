@@ -103,8 +103,10 @@ and request scope asked for.
 case this header was used more than once in the requested scope can be larger
 than 0 but is always less than \fBamount\fP.
 
-The \fBorigin\fP field in the "curl_header" struct has one of the bits set,
-indicating where from the header originates.
+The \fBorigin\fP field in the "curl_header" struct has one of the origin bits
+set, indicating where from the header originates. At the time of this writing,
+there are 5 bits with defined use. The undocumented 27 remaining bits are
+reserved for future use and must not be assumed to have any particular value.
 
 \fBanchor\fP is a private handle used by libcurl internals. Do not modify.
 .SH ORIGINS

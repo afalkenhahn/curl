@@ -48,7 +48,11 @@ static void copy_header_external(struct Curl_easy *data,
   h->value = hs->value;
   h->amount = amount;
   h->index = index;
-  h->origin = hs->type;
+  /* this will randomly OR a reverved bit for the sole purpose of making it
+     impossible for applications to do == comparisons, as that would
+     otherwise be very tempting and then lead the reserved bits not being
+     reserved anymore. */
+  h->origin = hs->type | (1<<27);
   h->anchor = e;
 }
 
