@@ -91,6 +91,11 @@ void ourWriteOutJSON(FILE *stream, const struct writeoutvar mappings[],
   fprintf(stream, "}");
 }
 
+#ifdef _MSC_VER
+/* warning C4706: assignment within conditional expression */
+#pragma warning(disable:4706)
+#endif
+
 void headerJSON(FILE *stream, struct per_transfer *per)
 {
   struct curl_header *header;
