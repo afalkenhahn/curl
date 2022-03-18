@@ -54,7 +54,14 @@ The initial path curl ended up in when logging on to the remote FTP
 server. (Added in 7.15.4)
 .TP
 .B header_json
-A JSON object with all HTTP response headers from the recent transfer.
+A JSON object with all HTTP response headers from the recent transfer. Values
+are provided as arrays, since in the case of multiple headers there can be
+multiple values.
+
+The header names are listed in order of appearance over the wire using the
+same case as was used over the network. Except for duplicated headers. They
+are grouped on the first occurance of that header, using the casing of the
+first header, and then each value is presented in the JSON array.
 .TP
 .B http_code
 The numerical response code that was found in the last retrieved HTTP(S) or
